@@ -6,6 +6,7 @@ interface applicationsType {
   loader: boolean;
   applicationsData: string[];
   applicationsDataByName: {
+    ResourceGroup: string;
     ServiceName: string;
     Cost: string;
     Date: string;

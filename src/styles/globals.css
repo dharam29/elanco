@@ -92,6 +92,8 @@ nav.cus-navbar {
   background: #00afff;
   color: #fff;
   padding: 20px 10px;
+  position: sticky;
+  top: 0;
 }
 
 .cus-table thead tr th:nth-child(1) {
@@ -114,6 +116,7 @@ nav.cus-navbar {
 
 ul.pagination {
   justify-content: center;
+  padding-top: 15px;
 }
 
 .table-responsive {

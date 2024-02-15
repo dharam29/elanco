@@ -79,7 +79,7 @@ const Resources = () => {
           <h5>
             Application :{" "}
             <span className="blue-heading">
-              {router?.query.dynamicappdetials}
+              {appDataByName[0]["ResourceGroup"]}
             </span>
           </h5>
         </div>
