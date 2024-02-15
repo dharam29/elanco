@@ -144,8 +144,14 @@ const ResourcesDetails = () => {
                   (item, index: number) => {
                     return (
                       <tr key={index}>
-                        <td>{item?.ResourceGroup}</td>
-                        <td>{item?.ServiceName}</td>
+                        <td>
+                          {item?.ResourceGroup?.charAt(0)?.toUpperCase() +
+                            item?.ResourceGroup?.slice(1)}
+                        </td>
+                        <td>
+                          {item?.ServiceName?.charAt(0)?.toUpperCase() +
+                            item?.ServiceName?.slice(1)}
+                        </td>
                         <td>{item?.Date}</td>
                         <td>{item?.Cost}</td>
                         <td>{item?.Location}</td>

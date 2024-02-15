@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { BaseUrl } from "@/components/Api/Api";
 import { Loader } from "@/components/Loader/Loader";
-import { getAllResourcesData } from "@/redux/reducer/Application";
+import { getAllResourcesData, setLoader } from "@/redux/reducer/Application";
 
 const Resources = () => {
   const router = useRouter();
@@ -48,12 +48,15 @@ const Resources = () => {
     axios
       .get(`${BaseUrl}/resources/${resourceName}`)
       .then((res) => {
+        //dispatch resoource data in store
         dispatch(getAllResourcesData(res.data));
         router.push(`/resources/${resourceName}`);
+        dispatch(setLoader(false));
       })
       .catch((err) => {
         console.log(err);
         router.push(`/`);
+        dispatch(setLoader(false));
       });
   };
 
@@ -79,7 +82,8 @@ const Resources = () => {
           <h5>
             Application :{" "}
             <span className="blue-heading">
-              {appDataByName[0]["ResourceGroup"]}
+              {appDataByName[0]["ResourceGroup"]?.charAt(0)?.toUpperCase() +
+                appDataByName[0]["ResourceGroup"]?.slice(1)}
             </span>
           </h5>
         </div>
@@ -92,7 +96,10 @@ const Resources = () => {
               <div key={Math.random()} className="col-md-4 mb-4">
                 <div
                   className="card"
-                  onClick={() => handleResourceChange(resourceName)}
+                  onClick={() => {
+                    dispatch(setLoader(true));
+                    handleResourceChange(resourceName);
+                  }}
                 >
                   <h3 className="card-heading">
                     Resource Name: {resourceName as unknown as string}

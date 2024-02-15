@@ -35,6 +35,7 @@ const Applications = () => {
       axios
         .get(`${BaseUrl}/applications`)
         .then((res) => {
+          //dispatch application data in store
           dispatch(getAllApplicationsData(res.data));
           const items = [...res.data];
           setApplications(items?.sort() as []);
@@ -65,6 +66,7 @@ const Applications = () => {
     axios
       .get(`${BaseUrl}/applications/${application}`)
       .then((res) => {
+        //dispatch application data by name in store
         dispatch(getAppDataByName(res.data));
         router.push(`/applications/${application}`);
         dispatch(setLoader(false));
@@ -106,7 +108,10 @@ const Applications = () => {
                       handleChange(application);
                     }}
                   >
-                    <h3 className="card-heading">{application}</h3>
+                    <h3 className="card-heading">
+                      {application?.charAt(0)?.toUpperCase() +
+                        application?.slice(1)}
+                    </h3>
                   </div>
                 </div>
               )

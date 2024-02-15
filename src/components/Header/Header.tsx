@@ -9,7 +9,7 @@ const Header = () => {
   const router = useRouter();
   return (
     <header className="web-header">
-      <Navbar expand="lg" className="cus-navbar">
+      <Navbar expand="sm" className="cus-navbar">
         <Container>
           <Navbar.Brand
             className="home-logo"
